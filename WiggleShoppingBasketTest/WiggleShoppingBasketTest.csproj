@@ -48,8 +48,8 @@
     <Compile Include="App\Application.cs" />
     <Compile Include="App\IApplication.cs" />
     <Compile Include="Constants\TextConstants.cs" />
-    <Compile Include="Data\BasketData.cs" />
-    <Compile Include="Data\IBasketData.cs" />
+    <Compile Include="Repository\BasketData.cs" />
+    <Compile Include="Repository\IBasketData.cs" />
     <Compile Include="Model\Basket.cs" />
     <Compile Include="Model\OfferVoucher.cs" />
     <Compile Include="Model\Product.cs" />
