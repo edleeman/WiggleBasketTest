@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using WiggleShoppingBasketTest.Model;
 
-namespace WiggleShoppingBasketTest.Services
+namespace WiggleShoppingBasketTest.Repository
 {
-    public interface IVoucherService
+    public interface IVoucherData
     {
-        Voucher GetSelectedVoucher(Basket selectedBasket, List<Voucher> voucherList);
+        List<Voucher> InitializeVouchers();
     }
 }

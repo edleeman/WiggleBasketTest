@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WiggleShoppingBasketTest.Data;
 using WiggleShoppingBasketTest.Model;
+using WiggleShoppingBasketTest.Repository;
 using WiggleShoppingBasketTest.Services;
 
 namespace WiggleShoppingBasketTest.App
@@ -12,19 +12,24 @@ namespace WiggleShoppingBasketTest.App
     public class Application : IApplication
     {
         private readonly IBasketService _basketService;
+        private readonly IBasketCalculationService _basketCalculationService;
         private readonly IBasketData _basketData;
+        private readonly IVoucherData _voucherData;
         private readonly IVoucherService _voucherService;
 
-        public Application(IBasketService basketService, IBasketData basketData, IVoucherService voucherService)
+        public Application(IBasketService basketService, IBasketCalculationService basketCalculationService, IBasketData basketData, IVoucherData voucherData, IVoucherService voucherService)
         {
             _basketService = basketService;
+            _basketCalculationService = basketCalculationService;
             _voucherService = voucherService;
             _basketData = basketData;
+            _voucherData = voucherData;
         }
 
         public void Run()
         {
             List<Basket> basketList = _basketData.InitializeBaskets();
+            List<Voucher> voucherList = _voucherData.InitializeVouchers();
             string selectedBasketInput = string.Empty;
             Basket selectedBasket = new Basket();
 
@@ -47,7 +52,8 @@ namespace WiggleShoppingBasketTest.App
 
             if (addVoucher.ToUpper() == "Y")
             {
-                _voucherService.RetrieveAndProcessVoucherCode(selectedBasket);
+                var selectedVoucher = _voucherService.GetSelectedVoucher(selectedBasket, voucherList);
+                _basketCalculationService.ApplyDiscount(selectedBasket, selectedVoucher);
             }
 
             Console.ReadKey();

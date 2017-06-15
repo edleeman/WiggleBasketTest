@@ -8,6 +8,8 @@ namespace WiggleShoppingBasketTest.Constants
 {
     public class TextConstants
     {
-
+        public const string GiftCode = "XXX-XXX";
+        public const string OfferCode = "YYY-YYY";
+        public const string HeadGearOfferCode = "HEADYYY-YYY";
     }
 }

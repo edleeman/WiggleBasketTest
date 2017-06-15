@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WiggleShoppingBasketTest.Model;
 
-namespace WiggleShoppingBasketTest.Data
+namespace WiggleShoppingBasketTest.Repository
 {
     public class BasketData : IBasketData
     {
@@ -65,7 +65,8 @@ namespace WiggleShoppingBasketTest.Data
                         new Product(){
                             Name = "Head Light",
                             Price = 3.50M,
-                            Quantity = 1
+                            Quantity = 1,
+                            Category = "Head Gear"
                         }
                     }
                 },
@@ -99,7 +100,8 @@ namespace WiggleShoppingBasketTest.Data
                         new Product(){
                             Name = "£30 Gift Voucher",
                             Price = 30.00M,
-                            Quantity = 1
+                            Quantity = 1,
+                            Category = "Voucher"
                         }
                     }
                 }

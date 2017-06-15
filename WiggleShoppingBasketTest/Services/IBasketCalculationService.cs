@@ -7,8 +7,8 @@ using WiggleShoppingBasketTest.Model;
 
 namespace WiggleShoppingBasketTest.Services
 {
-    public interface IVoucherService
+    public interface IBasketCalculationService
     {
-        Voucher GetSelectedVoucher(Basket selectedBasket, List<Voucher> voucherList);
+        void ApplyDiscount(Basket selectedBasket, Voucher voucher);
     }
 }

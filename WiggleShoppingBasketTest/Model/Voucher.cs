@@ -10,5 +10,6 @@ namespace WiggleShoppingBasketTest.Model
     {
         public string VoucherCode { get; set; }
         public decimal Discount { get; set; }
+        public int VoucherType { get; set; }
     }
 }

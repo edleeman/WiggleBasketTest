@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using WiggleShoppingBasketTest.App;
 using WiggleShoppingBasketTest.Model;
 using WiggleShoppingBasketTest.Services;
-using WiggleShoppingBasketTest.Data;
+using WiggleShoppingBasketTest.Repository;
 
 namespace WiggleShoppingBasketTest
 {
@@ -19,6 +19,8 @@ namespace WiggleShoppingBasketTest
             builder.RegisterType<Application>().As<IApplication>().SingleInstance().PreserveExistingDefaults();
             builder.RegisterType<BasketService>().As<IBasketService>().SingleInstance().PreserveExistingDefaults();
             builder.RegisterType<BasketData>().As<IBasketData>().SingleInstance().PreserveExistingDefaults();
+            builder.RegisterType<VoucherData>().As<IVoucherData>().SingleInstance().PreserveExistingDefaults();
+            builder.RegisterType<BasketCalculationService>().As<IBasketCalculationService>().SingleInstance().PreserveExistingDefaults();
             builder.RegisterType<VoucherService>().As<IVoucherService>().SingleInstance().PreserveExistingDefaults();
 
             var container = builder.Build();

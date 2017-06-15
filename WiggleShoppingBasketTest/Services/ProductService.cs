@@ -7,8 +7,11 @@ using WiggleShoppingBasketTest.Model;
 
 namespace WiggleShoppingBasketTest.Services
 {
-    public interface IVoucherService
+    public class ProductService : IProductService
     {
-        Voucher GetSelectedVoucher(Basket selectedBasket, List<Voucher> voucherList);
+        public List<Product> GetListOfProducts(Basket currentBasket)
+        {
+            return currentBasket.Products;
+        }
     }
 }

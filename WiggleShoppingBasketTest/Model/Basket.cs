@@ -11,8 +11,8 @@ namespace WiggleShoppingBasketTest.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Total { get; set; }
+        public decimal RunningTotal { get; set; }
         public List<Product> Products { get; set; }
-        public List<GiftVoucher> GiftVouchers { get; set; }
-        public List<OfferVoucher> OfferVouchers { get; set; }
+        public List<OfferVoucher> AppliedOfferVouchers { get; set; }
     }
 }
