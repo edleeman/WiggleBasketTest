@@ -47,13 +47,38 @@ namespace WiggleShoppingBasketTest.App
             Console.Clear();
             _basketService.ListCurrentBasketItems(selectedBasket);
 
-            Console.WriteLine("Would you like to add a voucher? (Y/N)");
-            string addVoucher = Console.ReadLine();
+            bool continueAddingVouchers = true;
 
-            if (addVoucher.ToUpper() == "Y")
+            while (continueAddingVouchers)
             {
-                var selectedVoucher = _voucherService.GetSelectedVoucher(selectedBasket, voucherList);
-                _basketCalculationService.ApplyDiscount(selectedBasket, selectedVoucher);
+                Console.WriteLine("Would you like to add a voucher? (Y/N)");
+                string addVoucher = Console.ReadLine();
+
+                bool voucherApplied = false;
+
+                if (addVoucher.ToUpper() == "Y")
+                {
+                    do
+                    {
+                        var selectedVoucher = _voucherService.GetSelectedVoucher(selectedBasket, voucherList);
+                        var voucherConformation = _basketCalculationService.AddVoucherToBasket(selectedBasket, selectedVoucher);
+                        voucherApplied = voucherConformation.Applied;
+                        if (!voucherConformation.Applied)
+                        {
+                            Console.WriteLine(voucherConformation.Message);
+                            Console.WriteLine("Please try again");
+                        };
+                    } while (!voucherApplied);
+
+                    if (_basketCalculationService.GetTotalForBasket(ref selectedBasket))
+                    {
+                        Console.WriteLine("Your voucher has been applied, your total is " + selectedBasket.Total.ToString("C"));
+                    }
+                }
+                else
+                {
+                    continueAddingVouchers = false;
+                }
             }
 
             Console.ReadKey();

@@ -9,6 +9,7 @@ namespace WiggleShoppingBasketTest.Services
 {
     public interface IBasketCalculationService
     {
-        void ApplyDiscount(Basket selectedBasket, Voucher voucher);
+        VoucherConfirmation AddVoucherToBasket(Basket selectedBasket, Voucher voucher);
+        bool GetTotalForBasket(ref Basket selectedBasket);
     }
 }

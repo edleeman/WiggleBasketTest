@@ -13,6 +13,6 @@ namespace WiggleShoppingBasketTest.Model
         public decimal Total { get; set; }
         public decimal RunningTotal { get; set; }
         public List<Product> Products { get; set; }
-        public List<OfferVoucher> AppliedOfferVouchers { get; set; }
+        public List<Voucher> AppliedVouchers { get; set; }
     }
 }
