@@ -14,11 +14,10 @@ namespace WiggleShoppingBasketTest.Services
         {
             selectedBasket.RunningTotal = selectedBasket.Total;
             var voucherConformation = new VoucherConfirmation();
-            selectedBasket.AppliedVouchers = new List<Voucher>();
 
             if (voucher.VoucherCode == TextConstants.GiftCode && selectedBasket.Products.Any(m => m.Category != "Gift Card"))
             {
-                selectedBasket.RunningTotal -= voucher.Discount;
+                selectedBasket.Total -= voucher.Discount;
                 selectedBasket.AppliedVouchers.Add(voucher);
                 voucherConformation.Applied = true;
                 return voucherConformation;
@@ -26,7 +25,6 @@ namespace WiggleShoppingBasketTest.Services
 
             if (voucher.VoucherCode == TextConstants.OfferCode || voucher.VoucherCode == TextConstants.HeadGearOfferCode) 
             {
-                selectedBasket.AppliedVouchers = new List<Voucher>();
                 if (selectedBasket.AppliedVouchers.Count > 0)
                 {
                     voucherConformation.Message = "Only one Offer Voucher can be used";
@@ -44,12 +42,17 @@ namespace WiggleShoppingBasketTest.Services
                     }
                 }
 
-                if (selectedBasket.Total < 50.00M) 
+                if (selectedBasket.Products.Any(m => m.Category == "Voucher"))
                 {
-                    decimal difference = (50.00M - selectedBasket.Products.Sum(m => m.Price));
-                    voucherConformation.Message = $"You have not reached the spend threshold for voucher {voucher.VoucherCode}. Spend another {difference} to receive £{voucher.Discount} discount from your basket total.";
-                    voucherConformation.Applied = false;
-                    return voucherConformation;
+                    selectedBasket.RunningTotal = selectedBasket.Total - selectedBasket.Products.Where(m => m.Category == "Voucher").FirstOrDefault().Price;
+
+                    if (selectedBasket.RunningTotal < 50.00M)
+                    {
+                        decimal difference = (50.00M - selectedBasket.Products.Where(m => m.Category != "Voucher").Sum(m => m.Price));
+                        voucherConformation.Message = $"You have not reached the spend threshold for voucher {voucher.VoucherCode}. Spend another {difference.ToString("C")} to receive £{voucher.Discount} discount from your basket total.";
+                        voucherConformation.Applied = false;
+                        return voucherConformation;
+                    }
                 }
 
                 selectedBasket.AppliedVouchers.Add(voucher);

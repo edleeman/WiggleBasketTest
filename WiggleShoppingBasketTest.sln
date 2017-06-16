@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiggleShoppingBasketTest", "WiggleShoppingBasketTest\WiggleShoppingBasketTest.csproj", "{F3415095-58AF-4024-BD78-A5BCE3C38D2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiggleShoppingBasketTest.Tests", "WiggleShoppingBasketTest.Tests\WiggleShoppingBasketTest.Tests.csproj", "{E80A3102-C599-4625-88CB-D373676298A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F3415095-58AF-4024-BD78-A5BCE3C38D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3415095-58AF-4024-BD78-A5BCE3C38D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3415095-58AF-4024-BD78-A5BCE3C38D2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E80A3102-C599-4625-88CB-D373676298A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E80A3102-C599-4625-88CB-D373676298A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E80A3102-C599-4625-88CB-D373676298A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E80A3102-C599-4625-88CB-D373676298A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
